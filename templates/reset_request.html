@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Reset Password</legend>
+                <div class="form=group">
+                    {{ form.email.label(class='form-control-label') }}
+                    {% if form.email.errors %}
+                        {{ form.email(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class='form-control form-control-lg') }}</br>
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form=group">
+                {{ form.submit(class='btn btn-outline-info') }}
+            </div>
+        </form>
+    </div>
+    <br>
+    <div>
+        <h2 style="text-align:center">
+          Follow Us On Socials
+        </h2>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://instagram.com/sweatbetsofficial/" style="color:#C13585">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@asap_beet?_t=8XFqQWCHMs6&_r=1">
+          <i class="fa-brands fa-tiktok" style="color:black"></i>
+        </a>
+        <a href="https://twitter.com/ASAP_Beet" style="color:#00acee">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://www.youtube.com/channel/UCY7Zydqz7MllRcpgjCyeAlw" style="color:red">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://discord.gg/PfU7q4RGar">
+          <i class="fa-brands fa-discord" style="color:#7289d9"></i>
+        </a>
+      </div>
+    </div>
+{% endblock content %}

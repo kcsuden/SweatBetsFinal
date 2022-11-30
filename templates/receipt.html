@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h3>
+      Fortnite Bets
+    </h3>
+    {% if logs == 'None' %}
+    <p>
+      You have not made any Fortnite Bets. They will appear here when you do.
+    </p>
+    {% else %}
+    {% for receipt in logs %}
+    <article class="media content-section">
+      <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="account">{{ receipt.username }}</a>
+        </div>
+        <h2><a class="article-title" href="{{ url_for('receipt', receipt_id=receipt.id) }}">Bet ID: {{ receipt.bet_id }}</a></h2>
+        <p class="article-content">Game: Fortnite</p>
+        <p class="article-content">Bet Wins: {{ receipt.bet_wins }}</p>
+        <p class="article-content">In-Game Wins: {{ receipt.wins }}</p>
+        <p class="article-content">Bet Kills: {{ receipt.bet_kills }}</p>
+        <p class="article-content">In-Game Kills: {{ receipt.kills }}</p>
+        <p class="article-content">Bet Amount: {{ receipt.user_bet_amount }}</p>
+        <p class="article-content">Bet Return: {{ receipt.user_bet_return }}</p>
+        <p class="article-content">Bet Result: {{ receipt.bet_status }}</p>
+      </div>
+    </article>
+    {% endfor %}
+    {% endif %}
+    <h3>
+      Valorant Bets:
+    </h3>
+    {% if valorant_logs == 'None' %}
+    <p>
+      You have not made any Fortnite Bets. They will appear here when you do.
+    </p>
+    {% else %}
+    {% for receipt in valorant_logs %}
+    <article class="media content-section">
+      <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="account">{{ receipt.username }}</a>
+        </div>
+        <h2><a class="article-title" href="{{ url_for('receipt', receipt_id=receipt.id) }}">Bet ID: {{ receipt.bet_id }}</a></h2>
+        <p class="article-content">Game: Valorant</p>
+        <p class="article-content">Bet Wins: {{ receipt.bet_wins }}</p>
+        <p class="article-content">Bet Kills: {{ receipt.bet_kills }}</p>
+        <p class="article-content">In-Game Wins: {{ receipt.in_game_wins }}</p>
+        <p class="article-content">In-Game Kills: {{ receipt.in_game_kills }}</p>
+        <p class="article-content">Bet Amount: {{ receipt.user_bet_amount }}</p>
+        <p class="article-content">Bet Return: {{ receipt.user_bet_return }}</p>
+        <p class="article-content">Bet Result: {{ receipt.bet_status }}</p>
+      </div>
+    </article>
+    {% endfor %}
+    {% endif %}
+    <br>
+    <div>
+        <h2 style="text-align:center">
+          Follow Us On Socials
+        </h2>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://instagram.com/sweatbetsofficial/" style="color:#C13585">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@asap_beet?_t=8XFqQWCHMs6&_r=1">
+          <i class="fa-brands fa-tiktok" style="color:black"></i>
+        </a>
+        <a href="https://twitter.com/ASAP_Beet" style="color:#00acee">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://www.youtube.com/channel/UCY7Zydqz7MllRcpgjCyeAlw" style="color:red">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://discord.gg/PfU7q4RGar">
+          <i class="fa-brands fa-discord" style="color:#7289d9"></i>
+        </a>
+      </div>
+    </div>
+{% endblock content %}

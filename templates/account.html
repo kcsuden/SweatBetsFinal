@@ -1,0 +1,204 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <div class="media">
+      <img class="rounded-circle account-img" src="{{ image_file }}">
+      <div class="media-body">
+        <h2 class="account-heading">{{ current_user.username }}</h2>
+        <p class="text-secondary">{{ current_user.email }}</p>
+      </div>
+    </div>
+      <form method="POST" action="" enctype="multipart/form-data">
+          {{ form.hidden_tag() }}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Account Info</legend>
+              <div class="form=group">
+                  {{ form.username.label(class='form-control-label') }}
+                  {% if form.username.errors %}
+                      {{ form.username(class='form-control form-control-lg is-invalid') }}
+                      <div class="invalid-feedback">
+                          {% for error in form.username.errors %}
+                              <span>{{ error }}</span>
+                          {% endfor %}
+                      </div>
+                  {% else %}
+                      {{ form.username(class='form-control form-control-lg') }}
+                  {% endif %}
+              </div>
+              <div class="form=group">
+                  {{ form.email.label(class='form-control-label') }}
+                  {% if form.email.errors %}
+                      {{ form.email(class='form-control form-control-lg is-invalid') }}
+                      <div class="invalid-feedback">
+                          {% for error in form.email.errors %}
+                              <span>{{ error }}</span>
+                          {% endfor %}
+                      </div>
+                  {% else %}
+                      {{ form.email(class='form-control form-control-lg') }}
+                  {% endif %}
+              </div>
+              <div class="form=group">
+                {{ form.algo_wallet.label(class='form-control-label') }}
+                {% if form.algo_wallet.errors %}
+                    {{ form.algo_wallet(class='form-control form-control-lg is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.algo_wallet.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.algo_wallet(class='form-control form-control-lg') }}
+                {% endif %}
+            </div>
+              <div class="form=group">
+              </br>{{ form.picture.label() }}</br>
+                {{ form.picture(class='form-control-file') }}</br></br>
+                {% if form.picture.errors %}
+                    {% for error in form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+              </div>
+          </fieldset>
+          <div class="form=group">
+              {{ form.submit(class='btn btn-outline-info') }}
+          </div>
+      </form>
+    </div>
+    <div>
+    <form method="POST" action="" enctype="multipart/form-data" class="content-section">
+        {{ algo_form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Deposit Funds (Algorand)</legend>
+            <p>
+                Depositing funds to SweatBets can be completed in two simple steps. If you dont have an account, vist the 'SweatBets x Algorand' section of our <a class="ml-2" href="{{ url_for('description') }}">Docs</a> or scroll to the bottom of this page to learn how we make money easy.<br><br>
+
+                Step 1: Once you are ready to deposit funds to you account, send the desired algorand funds to this wallet address:
+            </p>    
+            <p class="fit">
+                {{ my_wallet }}
+            </p>
+            <p>
+                Make sure to copy and paste the exact address to avoid mistakes in the deposit process.<br><br>
+                
+                Step 2: Once you have sent the desired amount to the wallet address, enter the EXACT amount of algorand sent (NOT DOLLARS).<br> Be sure your wallet history confirms that funds have
+                        been sent to the correct address before submitting.<br><br>
+
+                If you have sent funds to the correct address and entered the correct amount of algorand sent, the funds will be deposited immediately. Happy gaming!
+            </p>
+            <p style="color:red">
+                WARNING: YOU MAY ONLY DEPOSIT ONCE EVERY TEN MINUTES.
+            </p> 
+            <div class="form=group">
+                {{ algo_form.algo_amount.label(class='form-control-label') }}
+                {% if algo_form.algo_amount.errors %}
+                    {{ algo_form.algo_amount(class='form-control form-control-lg is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in algo_form.algo_amount.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ algo_form.algo_amount(class='form-control form-control-lg') }}
+                {% endif %}
+            </div>            
+        </fieldset>
+        <br>
+        <div class="form=group">
+            {{ algo_form.submit(class='btn btn-outline-info') }}
+        </div>
+    </form>
+    </div>
+    <br>
+    <div class="content-section">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ withdrawl_form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Withdrawal Funds</legend>
+            <p>
+                Withdrawal your winnings here. Withdrawals will be sent to the ALGO address saved to your account.
+            </p>
+            <div class="form=group">
+                {{ withdrawl_form.withdrawl_amount.label(class='form-control-label') }}
+                {% if withdrawl_form.withdrawl_amount.errors %}
+                    {{ withdrawl_form.withdrawl_amount(class='form-control form-control-lg is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in withdrawl_form.withdrawl_amount.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ withdrawl_form.withdrawl_amount(class='form-control form-control-lg') }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <br>
+        <div class="form=group">
+            {{ withdrawl_form.submit(class='btn btn-outline-info') }}
+        </div>
+    </form>
+    </div>
+    <br>
+    <div class="content-section">
+        <h3>
+            Algorand x SweatBets
+        </h3>
+        <p>
+            In order to make a bet, you will need to deposit funds to your SweatBets account. SweatBets currently accepts and pays out in Algorand.
+            Algorand cryptocurrency (ALGO) is a great way to easily and securly send/receive funds from SweatBets. Algorand is the 31st largest crypto by market cap in the world. It is cheap, fast, secure, and charges negligible fees to send transactions,
+            making it perfect for sending/receiving money to and from SweatBets. One way to acquire ALGO is to buy and send it from popular platforms such as Coinbase, Binance, or Kraken. If you are unfamiliar with these platforms or 
+            want a quicker and easier way, you can use the ALGO wallet Perawallet. Perawallet is a ALGO specific wallet that allows you to purchase tokens with card in minutes. Click the Perawallet link <a class="ml-2" href="https://perawallet.app/?gclid=Cj0KCQjw166aBhDEARIsAMEyZh5_IUZeAEcHYLBrYGX_pEVFGaQilJ4Zmyo2CSjWGw9wGqdLFL3pVD8aAq6EEALw_wcB">here</a> to download. Follow the apps simple instructions to purchase
+            some algo. Once you do, you are ready to bet!
+        </p>
+        <p>
+            Now that you have funds, lets get them to your SweatBets account. To deposit funds, head to the account page. If you have not already updated your account with your ALGO wallet, do so in the first section of the account page, then press update.
+        </p>
+        <p style="color:red">
+            WARNING: MAKE SURE TO COPY AND PASTE YOUR WALLET ADDRESS FROM YOU APP TO THIS SECTION TO ENSURE IT IS CORRECT. IF IT IS NOT, WE WILL NOT BE ABLE TO SEND YOU YOUR FUNDS WHEN YOU WITHDRAWAL!
+        </p> 
+        <img src="static/website_pics/algohelp1.jpg" class="center">
+        <p>
+            Once you have updated your account with your wallet address, you are ready to deposit funds. To do this, scroll to the "Deposit Algorand" section of your account page. There are instructions there.
+            In this section, you will see a wallet address that belongs to SweatBets under "Step 1". This is the address you will be sending ALGO to.
+        </p>
+        <p style="color:red">
+            WARNING: MAKE SURE TO COPY AND PASTE THIS WALLET ADDRESS FROM THE WEBSITE TO THE APP IN WHICH YOU WILL SEND FUNDS. IF YOU SEND MONEY TO THE INCORRECT ADDRESS, WE ARE NOT RESPONSIBLE FOR YOUR FUNDS! 
+        </p>
+        <p>
+            Once you have sent ALGO to the address, wait for a notification that your transaction has been complete. If you do not receive a notification, check your transaction history to see if it went through. Once you are certain
+            that the money has been sent to the correct address, enter the EXACT amount of ALGO sent to us, not the dollar amount. Once you are sure you have entered the correct amount, hit confirm. Your account balance should update within
+            seconds. If there was an error, you will be flashed a message describing the issue.
+        </p>
+        <p>
+            Withdrawaling is simple. Put in the amount in which you would like to withrawl from your account and click confirm. The funds will be sent to the address you have saved to your account.
+        </p> 
+    </div>
+    <br>
+    <div>
+        <h2 style="text-align:center">
+          Follow Us On Socials
+        </h2>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://instagram.com/sweatbetsofficial/" style="color:#C13585">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@asap_beet?_t=8XFqQWCHMs6&_r=1">
+          <i class="fa-brands fa-tiktok" style="color:black"></i>
+        </a>
+        <a href="https://twitter.com/ASAP_Beet" style="color:#00acee">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://www.youtube.com/channel/UCY7Zydqz7MllRcpgjCyeAlw" style="color:red">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://discord.gg/PfU7q4RGar">
+          <i class="fa-brands fa-discord" style="color:#7289d9"></i>
+        </a>
+      </div>
+    </div>
+</div>
+{% endblock content %}

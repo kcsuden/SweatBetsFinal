@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Login</legend>
+                <div class="form=group">
+                    {{ form.email.label(class='form-control-label') }}
+                    {% if form.email.errors %}
+                        {{ form.email(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.password.label(class='form-control-label') }}
+                    {% if form.password.errors %}
+                        {{ form.password(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="'form-check">
+                    {{ form.remember(class='form-check-input') }}
+                    {{ form.remember.label(class='form-check-label') }}
+                </div>
+            </fieldset><br>
+            <div class="form=group">
+                {{ form.submit(class='btn btn-outline-info') }}
+            </div>
+            <!-- <small class="text-muted ml-2">
+                <a href="{{ url_for('reset_request') }}">Forgot Password?</a>
+            </small> -->
+        </form>
+    <div class=" border-top pt-3">
+        <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up</a>
+        </small>
+    </div>
+    </div>
+    <br>
+    <div>
+        <h2 style="text-align:center">
+          Follow Us On Socials
+        </h2>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://instagram.com/sweatbetsofficial/" style="color:#C13585">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@asap_beet?_t=8XFqQWCHMs6&_r=1">
+          <i class="fa-brands fa-tiktok" style="color:black"></i>
+        </a>
+        <a href="https://twitter.com/ASAP_Beet" style="color:#00acee">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://www.youtube.com/channel/UCY7Zydqz7MllRcpgjCyeAlw" style="color:red">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://discord.gg/PfU7q4RGar">
+          <i class="fa-brands fa-discord" style="color:#7289d9"></i>
+        </a>
+      </div>
+    </div>
+{% endblock content %}

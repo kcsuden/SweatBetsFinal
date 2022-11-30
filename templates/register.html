@@ -1,0 +1,263 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+                <p style="color:red">*WARNING: You will not be able to update your gaming account info once you create your accout. Please enter information for all games you have accounts for, even if you don't plan on using them.</p>
+                <div class="form=group">
+                    {{ form.first_name.label(class='form-control-label') }}
+                    {% if form.first_name.errors %}
+                        {{ form.first_name(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.first_name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.first_name(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.last_name.label(class='form-control-label') }}
+                    {% if form.last_name.errors %}
+                        {{ form.last_name(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.last_name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.last_name(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.username.label(class='form-control-label') }}
+                    {% if form.username.errors %}
+                        {{ form.username(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.email.label(class='form-control-label') }}
+                    {% if form.email.errors %}
+                        {{ form.email(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.birthday.label(class='form-control-label') }}
+                    {% if form.birthday.errors %}
+                        {{ form.birthday(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.birthday.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.birthday(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.password.label(class='form-control-label') }}
+                    {% if form.password.errors %}
+                        {{ form.password(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.confirm_password.label(class='form-control-label') }}
+                    {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.confirm_password(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.fortnite_account_name.label(class='form-control-label') }}
+                    {% if form.fortnite_account_name.errors %}
+                        {{ form.fortnite_account_name(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.fortnite_account_name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.fortnite_account_name(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.fortnite_account_type.label(class='form-control-label') }}
+                    {% if form.fortnite_account_type.errors %}
+                        {{ form.fortnite_account_type(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.fortnite_account_type.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.fortnite_account_type(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.valorant_account_name.label(class='form-control-label') }}
+                    {% if form.valorant_account_name.errors %}
+                        {{ form.valorant_account_name(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.valorant_account_name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.valorant_account_name(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.valorant_account_tag.label(class='form-control-label') }}
+                    {% if form.valorant_account_tag.errors %}
+                        {{ form.valorant_account_tag(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.valorant_account_tag.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.valorant_account_tag(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.valorant_account_region.label(class='form-control-label') }}
+                    {% if form.valorant_account_region.errors %}
+                        {{ form.valorant_account_region(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.valorant_account_region.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.valorant_account_region(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.algo_wallet.label(class='form-control-label') }}
+                    {% if form.algo_wallet.errors %}
+                        {{ form.algo_wallet(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.algo_wallet.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.algo_wallet(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                <br>{{ form.id_picture.label() }}<br>
+                  {{ form.id_picture(class='form-control-file') }}</br>
+                  {% if form.id_picture.errors %}
+                      {% for error in form.id_picture.errors %}
+                          <span class="text-danger">{{ error }}</span>
+                      {% endfor %}
+                  {% endif %}
+                </div>
+                <div class="form=group">
+                <br>{{ form.face_picture.label() }}<br>
+                    {{ form.face_picture(class='form-control-file') }}</br>
+                    {% if form.face_picture.errors %}
+                        {% for error in form.id_picture.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <br>
+            <small style="color:red">
+                *PLEASE ALLOW 30 SECONDS FOR DATA TO BE READ<br>
+                *By clicking "Sign Up", you agree that you have read and understood our Terms and Conditions
+            </small>
+            <br>
+            <div class="form=group">
+                {{ form.submit(class='btn btn-outline-info') }}
+            </div>
+        </form>
+    <div class=" border-top pt-3">
+        <small class="text-muted">
+            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+        </small>
+    </div>
+    </div>
+    <br>
+    <div class="content-section">
+        <h3>
+            Getting Started
+        </h3>
+        <p>
+            To start making bets, you will need to create an account. You can do this at the "Register" tab. But before you register, you will need to gather some information the accounts you use to play your favorite games. Before moving forward,
+            please pay attention to this major disclaimer:
+            <p style="color:red">
+                WARNING: THE REGISTRATION PROCESS IS YOUR ONLY CHANCE TO SUBMIT GAMING ACCOUNTS TO SWEATBETS. YOU WILL NOT BE ABLE TO UPDATE THIS INFORMATION ONCE YOU CREATE AN ACCOUNT. PLEASE MAKE SURE YOU SUBMIT 
+                ACCOUNT INFO FOR ALL THE GAMES YOU PLAY, EVEN IF YOU DONT PLAN ON BETTING ON THEM.
+            </p> 
+            Fortnite requires your just your account name and your system type (Xbox, PlayStation, PC). For Xbox and PlayStation, your account name is the name that appears in the Fortnite game. For PC, your account name should be your steam account name.
+            If this doesn't work, try your account name in Fortnite. For Valorant, you need a bit more information: account name, account tag, and account region. Your account name should be the name that appears in the game, and your tag can be found as the number
+            to the right of the hashtag next to your account name. Do not include the hashtag when submitting info. In the example below, the account name is boxed in RED, the tag in BLUE, 
+            and the region in GREEN.
+        </p>
+        <img src="static/website_pics/valorantguide1.jpg" class="center">
+        <img src="static/website_pics/valorantguide2.jpg" class="center">
+    
+        <p>
+            The last bit of information you need is an Algorand crypto wallet. You do not need an algorand wallet to sign up, but you will need to add one to your account to place bets. For more information on the Algorand wallet and transactions, please see the <a class="ml-2" href="{{ url_for('description') }}">Docs</a> page.
+        </p>
+    </div>
+    <br>
+    <div>
+        <h2 style="text-align:center">
+          Follow Us On Socials
+        </h2>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://instagram.com/sweatbetsofficial/" style="color:#C13585">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@asap_beet?_t=8XFqQWCHMs6&_r=1">
+          <i class="fa-brands fa-tiktok" style="color:black"></i>
+        </a>
+        <a href="https://twitter.com/ASAP_Beet" style="color:#00acee">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://www.youtube.com/channel/UCY7Zydqz7MllRcpgjCyeAlw" style="color:red">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://discord.gg/PfU7q4RGar">
+          <i class="fa-brands fa-discord" style="color:#7289d9"></i>
+        </a>
+      </div>
+    </div>
+{% endblock content %}

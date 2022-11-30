@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/86461d8b85.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+      <div class="container">
+        <a class="navbar-brand me-4" href="/">SweatBets</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            <li><a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a></li>
+            <li><a class="nav-item nav-link" href="{{ url_for('description') }}">Docs</a></li>
+            <li><a class="nav-item nav-link" href="{{ url_for('terms') }}">Terms and Conditions</a></li>
+            {% if current_user.is_authenticated %}
+              <li><a class="nav-item nav-link" href="{{ url_for('select_game') }}">Betting</a></li>
+              <li><a class="nav-item nav-link" href="{{ url_for('redeem') }}">Redeem Bet</a></li>
+              <li><a class="nav-item nav-link" href="{{ url_for('log') }}">Bet Receipts</a></li>
+              <li><a class="nav-item nav-link" href="{{ url_for('feedback') }}">Contact Us</a></li>
+              <li><a class="nav-item nav-link" href="{{ url_for('acc') }}">Account</a></li>
+              <li><a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+              <li><a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a></li>
+              <li><a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
+          </ul>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav ms-auto">
+            {% if current_user.is_authenticated %}
+              <li><a class="nav-item nav-link" href="{{ url_for('acc') }}">Balance: ${{ account_balance }}</a></li>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    {% with messages = get_flashed_messages(with_categories=true)  %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            <p>{{ message }}</p>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

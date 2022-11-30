@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        <h1>Confirm Bet</h1>
+        <article class="media content-section">
+          <div class="media-body">
+              <h2 style="color:black">Your Bet:</h2>
+              <h6 class="article-content">Game: Valorant</h6>
+              <h6 class="article-content">Game Mode: Competitive</h6>
+              <h6 class="article-content">Bet Wins: {{ wins }}</h6>
+              <h6 class="article-content">Bet Kills: {{ kills }}</h6>
+              <h6 class="article-content">Bet Amount: ${{ amount }}</h6>
+              <h6 class="article-content">Bet Return: ${{ amount_returned }}</h6>
+          </div>
+        </article>
+        <p>
+            BY CONFIRMING, YOU ARE AGREEING TO THE FOLLOWING:
+        </p>
+        <p style="color:red">
+            - IF YOU PLAY THE WRONG GAME MODE OR GAME, YOU WILL NOT RECIEVE YOUR FUNDS, REGARDLESS OF WIN OR LOSS!
+            - IF YOU DO NOT REDEEM YOUR BET, YOU WILL NOT RECEIVE YOUR FUNDS!<br> 
+            - IF YOU DO NOT START YOUR GAME WITHIN 5 MINUTES OF PLACING YOUR BET, YOU WILL NOT RECEIVE YOUR FUNDS, REGARDLESS OF WIN OR LOSS!<br>
+            - IF YOU DO NOT REDEEM YOUR BET WITHIN 5 MINUTES AFTER FINISHING YOUR GAME, YOU WILL NOT RECEIVE YOUR FUNDS, REGARDLESS OF WIN OR LOSS!<br>
+            - IF PLAY A GAME AFTER THE GAME YOU BET ON AND THEN REDEEM YOUR BET, YOU WILL NOT RECEIVE YOUR FUNDS, REGARDLESS OF WIN OR LOSS!<br>
+            - SWEATSBETS IS NOT RESPONSIBLE FOR YOUR LOST FUNDS IF ANY OF THESE OCCUR!
+        </p>
+        <h4>
+            Your Bet ID: {{ id }}<br>
+            Your Bet Passphrase: {{ passphrase }}<br>
+        </h4>
+        <p>
+            You will need this information to redeem your bet. If you forget to remember or write this down, you can find it at the bottom of the 'Redeem Bet' page.
+        </p>
+    </div>
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Bet On Your Valorant Performance</legend>
+                <div class="form=group">
+                    {{ form.confirm_bet.label(class='form-control-label') }}
+                    {% if form.confirm_bet.errors %}
+                        {{ form.confirm_bet(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_bet.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.confirm_bet(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+            </fieldset><br>
+            <div class="form=group">
+                {{ form.submit(class='btn btn-outline-info') }}
+            </div>
+    </div>
+    <br>
+    <div>
+        <h2 style="text-align:center">
+          Follow Us On Socials
+        </h2>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://instagram.com/sweatbetsofficial/" style="color:#C13585">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@asap_beet?_t=8XFqQWCHMs6&_r=1">
+          <i class="fa-brands fa-tiktok" style="color:black"></i>
+        </a>
+        <a href="https://twitter.com/ASAP_Beet" style="color:#00acee">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://www.youtube.com/channel/UCY7Zydqz7MllRcpgjCyeAlw" style="color:red">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://discord.gg/PfU7q4RGar">
+          <i class="fa-brands fa-discord" style="color:#7289d9"></i>
+        </a>
+      </div>
+    </div>
+{% endblock content %}

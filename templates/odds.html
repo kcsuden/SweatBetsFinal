@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Bet On Your Fortnite Performance</legend>
+                <div class="form=group">
+                    {{ form.user_bet_kills.label(class='form-control-label') }}
+                    {% if form.user_bet_kills.errors %}
+                        {{ form.user_bet_kills(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.user_bet_kills.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.user_bet_kills(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.user_bet_wins.label(class='form-control-label') }}
+                    {% if form.user_bet_wins.errors %}
+                        {{ form.user_bet_wins(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.user_bet_wins.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.user_bet_wins(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+                <div class="form=group">
+                    {{ form.user_bet_amount.label(class='form-control-label') }}
+                    {% if form.user_bet_amount.errors %}
+                        {{ form.user_bet_amount(class='form-control form-control-lg is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.user_bet_amount.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.user_bet_amount(class='form-control form-control-lg') }}
+                    {% endif %}
+                </div>
+            </fieldset><br>
+            <div class="form=group">
+                {{ form.submit(class='btn btn-outline-info') }}
+            </div>
+    </div>
+    <br>
+    <div>
+        <h2 style="text-align:center">
+          Follow Us On Socials
+        </h2>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://instagram.com/sweatbetsofficial/" style="color:#C13585">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@asap_beet?_t=8XFqQWCHMs6&_r=1">
+          <i class="fa-brands fa-tiktok" style="color:black"></i>
+        </a>
+        <a href="https://twitter.com/ASAP_Beet" style="color:#00acee">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+      </div>
+      <div class="singleCol social-media-icons d-flex justify-content-evenly">
+        <a href="https://www.youtube.com/channel/UCY7Zydqz7MllRcpgjCyeAlw" style="color:red">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://discord.gg/PfU7q4RGar">
+          <i class="fa-brands fa-discord" style="color:#7289d9"></i>
+        </a>
+      </div>
+    </div>
+{% endblock content %}
